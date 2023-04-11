@@ -1,0 +1,9 @@
+/.idea
+/.readmes
+/.theia
+/.vscode
+/instance
+/.dockerignore
+/Dockerfile
+/test_content.sh
+/Procfile
