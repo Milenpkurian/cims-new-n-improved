@@ -2,10 +2,9 @@
 /.readmes
 /.theia
 /.vscode
-/instance
-./instance
 /.dockerignore
 /Dockerfile
 /test_content.sh
 /Procfile
+/__pycache__
 
