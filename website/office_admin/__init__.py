@@ -2,15 +2,23 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
+from .config import master_db
 
 db = SQLAlchemy()
-DB_NAME = "database.db"
+DB_NAME = master_db
 
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+
+    # Secret Key Generation
+    import secrets
+    secret_key = secrets.token_hex(16)
+    # example output, secret_key = 000d88cd9d90036ebdd237eb6b0dep000
+    app.config['SECRET_KEY'] = secret_key
+
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'{DB_NAME}'
     db.init_app(app)
 
     from .views import views
@@ -19,7 +27,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    from .models import User, Note
+    from .models import User
     
     with app.app_context():
         db.create_all()
