@@ -6,5 +6,6 @@
 /Dockerfile
 /test_content.sh
 /Procfile
-/__pycache__
+/website/__pycache__
+/website/office_admin/__pycache__
 
