@@ -14,7 +14,7 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
 
-        user = User.query.filter_by(username=username).first()
+        user = User.query.filter_by(username=username, usertype="officeAdmin").first()
         print(user)
         if user:
             if check_password_hash(user.password, password):
@@ -40,8 +40,8 @@ def logout():
 def sign_up():
     if request.method == 'POST':
         username = request.form.get('username')
-        usertype=request.form.get('usertype')
-        department = request.form.get('department')
+        # usertype=request.form.get('usertype')
+        # department = request.form.get('department')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
@@ -53,7 +53,7 @@ def sign_up():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
-            new_user = User(username=username, usertype=usertype, department=department, password=generate_password_hash(
+            new_user = User(username=username, usertype="officeAdmin", department=None, password=generate_password_hash(
                 password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()

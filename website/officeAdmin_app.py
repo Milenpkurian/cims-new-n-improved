@@ -1,4 +1,4 @@
-from .office_admin import create_app
+from .officeAdmin import create_app
 
 app = create_app()
 
