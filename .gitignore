@@ -7,5 +7,5 @@
 /test_content.sh
 /Procfile
 /website/__pycache__
-/website/office_admin/__pycache__
+/website/officeAdmin/__pycache__
 
