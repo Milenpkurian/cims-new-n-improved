@@ -1,1 +1,0 @@
-master_db="mysql+mysqlconnector://<username>:<password>@<hostname>/<database_name>"
