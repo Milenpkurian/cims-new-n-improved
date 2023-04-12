@@ -3,6 +3,7 @@
 /.theia
 /.vscode
 /instance
+./instance
 /.dockerignore
 /Dockerfile
 /test_content.sh
