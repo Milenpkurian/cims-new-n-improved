@@ -1,0 +1,187 @@
+{% extends "/home/sidebar.html" %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block main %}
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+
+				<!--
+					<a href="#" class="btn-download">
+						<i class='bx bxs-cloud-download' ></i>
+						<span class="text">Download PDF</span>
+					</a>
+				-->
+
+			</div>
+
+			<ul class="box-info">
+				<li>
+					<i class='{% block box1Icon %}bx bxs-flask{% endblock box1Icon %}' ></i>
+					<span class="text">
+						<h3>{% block box1Count %}100{% endblock box1Count %}</h3>
+						<p>{% block box1Name %}Lab Items{% endblock box1Name %}</p>
+					</span>
+				</li>
+				<li>
+					<i class='{% block box2Icon %}bx bx-chair{% endblock box2Icon %}' ></i>
+					<span class="text">
+						<h3>{% block box2Count %}400{% endblock box2Count %}</h3>
+						<p>{% block box2Name %}Furniture{% endblock box2Name %}</p>
+					</span>
+				</li>
+				<li>
+					<i class='{% block box3Icon %}bx bx-bulb{% endblock box3Icon %}' ></i>
+					<span class="text">
+						<h3>{% block box3Count %}50{% endblock box3Count %}</h3>
+						<p>{% block box3Name %}Electronics{% endblock box3Name %}</p>
+					</span>
+				</li>
+				<li>
+					<i class='{% block box4Icon %}bx bx-desktop{% endblock box4Icon %}' ></i>
+					<span class="text">
+						<h3>{% block box4Count %}100{% endblock box4Count %}</h3>
+						<p>{% block box4Name %}Computers{% endblock box4Name %}</p>
+					</span>
+				</li>
+			</ul>
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>{% block bigBox1Heading %}Items Needed{% endblock bigBox1Heading %}</h3>
+						<i class='bx bx-menu' ></i>
+					</div>
+					{% block bigBox1Table %}
+					
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date Order</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status process">Process</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+					
+
+
+                    {% endblock bigBox1Table %}
+
+
+				</div>
+				<div class="order">
+					<div class="head">
+						<h3>{% block bigBox2Heading %}Items Needed{% endblock bigBox2Heading %}</h3>
+						<i class='bx bx-menu' ></i>
+					</div>
+					{% block bigBox2Table %}
+					
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date Order</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status process">Process</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+					
+
+
+                    {% endblock bigBox2Table %}
+
+
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+{% endblock main %}
