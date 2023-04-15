@@ -1,4 +1,4 @@
-from dotenv.main import load_dotenv
+# from dotenv.main import load_dotenv
 import os
 load_dotenv()
 HOST=os.environ['HOST']
