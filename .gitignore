@@ -10,3 +10,4 @@
 /website/officeAdmin/__pycache__
 /website/home/__pycache__
 .vercel
+/website/officeAdmin/.env
