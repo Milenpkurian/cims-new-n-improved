@@ -29,34 +29,42 @@
 			</div>
 
 			<ul class="box-info">
-				<li>
-					<i class='{% block box1Icon %}bx bxs-flask{% endblock box1Icon %}' ></i>
-					<span class="text">
-						<h3>{% block box1Count %}100{% endblock box1Count %}</h3>
-						<p>{% block box1Name %}Lab Items{% endblock box1Name %}</p>
-					</span>
-				</li>
-				<li>
-					<i class='{% block box2Icon %}bx bx-chair{% endblock box2Icon %}' ></i>
-					<span class="text">
-						<h3>{% block box2Count %}400{% endblock box2Count %}</h3>
-						<p>{% block box2Name %}Furniture{% endblock box2Name %}</p>
-					</span>
-				</li>
-				<li>
-					<i class='{% block box3Icon %}bx bx-bulb{% endblock box3Icon %}' ></i>
-					<span class="text">
-						<h3>{% block box3Count %}50{% endblock box3Count %}</h3>
-						<p>{% block box3Name %}Electronics{% endblock box3Name %}</p>
-					</span>
-				</li>
-				<li>
-					<i class='{% block box4Icon %}bx bx-desktop{% endblock box4Icon %}' ></i>
-					<span class="text">
-						<h3>{% block box4Count %}100{% endblock box4Count %}</h3>
-						<p>{% block box4Name %}Computers{% endblock box4Name %}</p>
-					</span>
-				</li>
+				<a href="{{ url_for('views.stock_details',id='Lab Items') }}">
+                    <li>
+                        <i class='{% block box1Icon %}bx bxs-flask{% endblock box1Icon %}' ></i>
+                        <span class="text">
+                            <h3>{% block box1Count %}100{% endblock box1Count %}</h3>
+                            <p>{% block box1Name %}Lab Items{% endblock box1Name %}</p>
+                        </span>
+                    </li>
+                </a>
+                <a href="{{ url_for('views.stock_details',id='Furniture') }}">
+                    <li>
+                        <i class='{% block box2Icon %}bx bx-chair{% endblock box2Icon %}' ></i>
+                        <span class="text">
+                            <h3>{% block box2Count %}400{% endblock box2Count %}</h3>
+                            <p>{% block box2Name %}Furniture{% endblock box2Name %}</p>
+                        </span>
+                    </li>
+                </a>
+				<a href="{{ url_for('views.stock_details',id='Electronics') }}">
+                    <li>
+                        <i class='{% block box3Icon %}bx bx-bulb{% endblock box3Icon %}' ></i>
+                        <span class="text">
+                            <h3>{% block box3Count %}50{% endblock box3Count %}</h3>
+                            <p>{% block box3Name %}Electronics{% endblock box3Name %}</p>
+                        </span>
+                    </li>
+                </a>
+				<a href="{{ url_for('views.stock_details',id='Computers') }}">
+                    <li>
+                        <i class='{% block box4Icon %}bx bx-desktop{% endblock box4Icon %}' ></i>
+                        <span class="text">
+                            <h3>{% block box4Count %}100{% endblock box4Count %}</h3>
+                            <p>{% block box4Name %}Computers{% endblock box4Name %}</p>
+                        </span>
+                    </li>
+                </a>
 			</ul>
 
 

@@ -1,0 +1,307 @@
+{% extends '/home/datatables.html' %}
+
+{% block title %} {{id}} {% endblock  %}
+{% block navbar %} 
+<center> <h1>{{ id }}</h1></center>
+<script>
+    console.log("{{ timestamp }}");
+</script>
+{% endblock navbar %}
+
+{% block Home %} {{url_for('views.home')}}   {% endblock  %}
+
+{% block modal %}
+<button class="btn btn-success" style="float:left;margin-right:20px;" data-toggle="modal" data-target="#insertModal">Insert</button>
+
+<div id="insertModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
+       <div class="modal-content">
+          <div class="modal-header">
+ 
+             <h4 class="modal-title">Insert</h4>
+          </div>
+          <div class="modal-body">
+ 
+             <form action=" {{url_for('views.insert',id=id)}}" method="POST">
+ 
+ 
+                <div class="form-group">
+ 
+                   <label>Stock No:</label>
+                   <input type="text" class="form-control" name="stock_no" required="1">
+ 
+ 
+                </div>
+ 
+ 
+                 <div class="form-group">
+ 
+ 
+                   <label>Item Name:</label>
+                   <input type="text" class="form-control" name="item_name" required="1">
+ 
+ 
+                </div>
+ 
+ 
+                 <div class="form-group">
+ 
+ 
+                   <label>Item Type:</label>
+                   <input type="text" class="form-control" name="item_type" required="1">
+ 
+ 
+                </div>
+                <div class="form-group">
+ 
+ 
+                    <label>Rate:</label>
+                    <input type="number" class="form-control" name="rate" required="1">
+  
+  
+                 </div>
+                <div class="form-group">
+ 
+ 
+                   <label>Date:</label>
+                   <input type="date" class="form-control" name="date" required="1">
+ 
+ 
+                </div>
+                <div class="form-group">
+ 
+ 
+                   <label>Total Qty:</label>
+                   <input type="text" class="form-control" name="total_qty" required="1">
+ 
+ 
+                </div>
+                <div class="form-group">
+ 
+ 
+                  <label>Balance Qty:</label>
+                  <input type="text" class="form-control" name="balance_qty" required="1">
+
+
+               </div>
+               <div class="form-group">
+ 
+ 
+                <label>Issued ID:</label>
+                <input type="text" class="form-control" name="issued_id">
+
+
+             </div>  
+               <div class="form-group">
+ 
+ 
+                  <label>Issued Qty:</label>
+                  <input type="text" class="form-control" name="issued_qty">
+
+
+               </div>
+               <div class="form-group">
+ 
+ 
+                  <label>Issued to:</label>
+                  <input type="text" class="form-control" name="issued_to">
+
+
+               </div>
+          </div>
+          <div class="modal-footer">
+ 
+ 
+               <button class="btn btn-primary" type="submit">Insert</button>
+
+
+         </form>
+
+
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+ 
+ 
+          </div>
+       </div>
+    </div>
+</div>
+
+{% endblock modal %}
+
+{% block thead %}
+
+<tr>
+    <th>Stock No</th>    
+    <th>Item Name</th>    
+    <th>Item Type</th>    
+    <th>Rate</th>
+    <th>Date</th>    
+    <th>Total Qty</th>
+    <th>Balance Qty</th>
+    <th>Issued ID</th>
+    <th>Issued Qty</th>
+    <th>Issued To</th>
+    <th>Issued Date</th>
+    <th>Options</th>
+</tr>
+
+{% endblock  %}
+
+
+
+{% block tbody %}
+
+
+    {% for row in result  %}
+
+        <tr>
+            <td>{{ row.stock_no }}</td>
+            <td>{{ row.item_name }}</td>
+            <td>{{ row.item_type }}</td>
+            <td>{{ row.rate }}</td>
+            <td>{{ row.date }}</td>
+            <td>{{ row.total_qty }}</td>
+            <td>{{ row.balance_qty }}</td>
+            <td>{{ row.issued_id }}</td>
+            <td>{{ row.issued_qty }}</td>
+            <td>{{ row.issued_to }}</td>
+            <td>{{ row.issued_date }}</td>
+            <td>
+               <button type="button" class="btn btn-success" style="float:left;margin-right:20px;" data-toggle="modal" data-target="#editModal{{row.stock_no}}">Edit</button>
+                {% if row.issued_id != None %}
+                    <a class="btn btn-danger" style="float:left;margin-right:20px;" href="{{ url_for('views.delete',id=id,stockno=row.stock_no,itemname=row.item_name,issued_id=row.issued_id) }}">Delete</a>
+                {% else %}
+                    <a class="btn btn-danger" style="float:left;margin-right:20px;" href="{{ url_for('views.delete',id=id,stockno=row.stock_no,itemname=row.item_name,issued_id='None') }}">Delete</a>
+                {% endif %}
+            </td>
+        </tr>
+         <div id="editModal{{row.stock_no}}" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
+               <div class="modal-content">
+                  <div class="modal-header">
+         
+                     <h4 class="modal-title">Edit</h4>
+                  </div>
+                  <div class="modal-body">
+         
+                     <form action="{{url_for('views.update',id=id,stockno=row.stock_no,itemname=row.item_name)}}" method="POST">
+         
+         
+                        <div class="form-group">
+         
+                           <label>Stock No:</label>
+                           <input type="text" class="form-control" name="stock_no" required="1" value="{{row.stock_no}}">
+         
+         
+                        </div>
+         
+         
+                        <div class="form-group">
+         
+         
+                           <label>Item Name:</label>
+                           <input type="text" class="form-control" name="item_name" required="1" value="{{row.item_name}}">
+         
+         
+                        </div>
+         
+         
+                        <div class="form-group">
+         
+         
+                           <label>Item Type:</label>
+                           <input type="text" class="form-control" name="item_type" required="1" value="{{row.item_type}}">
+         
+         
+                        </div>
+                        <div class="form-group">
+         
+         
+                            <label>Rate:</label>
+                            <input type="number" class="form-control" name="rate" required="1" value="{{row.rate}}">
+          
+          
+                         </div>
+                        <div class="form-group">
+         
+         
+                           <label>Date:</label>
+                           <input type="date" class="form-control" name="date" required="1" value="{{row.date}}">
+         
+         
+                        </div>
+                        <div class="form-group">
+         
+         
+                           <label>Total Qty:</label>
+                           <input type="text" class="form-control" name="total_qty" required="1" value="{{row.total_qty}}">
+         
+         
+                        </div>
+                        <div class="form-group">
+         
+         
+                        <label>Balance Qty:</label>
+                        <input type="text" class="form-control" name="balance_qty" required="1" value="{{row.balance_qty}}">
+      
+      
+                     </div>
+                     <div class="form-group">
+         
+         
+                        <label>Issued ID:</label>
+                        <input type="text" class="form-control" name="issued_id" value="{{row.issued_id}}">
+      
+      
+                     </div>
+                     <div class="form-group">
+         
+         
+                        <label>Issued Qty:</label>
+                        <input type="text" class="form-control" name="issued_qty"  value="{{row.issued_qty}}">
+      
+      
+                     </div>
+                     <div class="form-group">
+         
+         
+                        <label>Issued to:</label>
+                        <input type="text" class="form-control" name="issued_to" value="{{row.issued_to}}">
+      
+      
+                     </div>  
+                     <div class="form-group">
+         
+         
+                        <label>Issued Date:</label>
+                        <input type="date" class="form-control" name="issued_date" value="{{row.issued_date}}">
+      
+      
+                     </div>  
+                  </div>
+                  <div class="modal-footer">
+         
+         
+                     <button class="btn btn-primary" type="submit">Update</button>
+      
+      
+               </form>
+      
+      
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         
+         
+                  </div>
+         
+         
+               </div>
+         
+         
+            </div>
+         
+         
+         </div>
+     
+    {% endfor %}
+
+{% endblock  %}

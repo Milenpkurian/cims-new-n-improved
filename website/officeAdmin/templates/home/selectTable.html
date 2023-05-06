@@ -1,0 +1,86 @@
+{% extends "/home/sidebar.html" %}
+
+{% block title %}{{ id }}{% endblock title %}
+
+{% block headExtra %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css">
+{% endblock headExtra %}
+
+{% block main %}
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>{{ id }}</h1>
+				</div>
+
+				<!--
+					<a href="#" class="btn-download">
+						<i class='bx bxs-cloud-download' ></i>
+						<span class="text">Download PDF</span>
+					</a>
+				-->
+
+			</div>
+
+
+			<div class="table-data">
+				<div class="order">
+					{% block bigBox1Table %}
+					
+					<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Stock No</th>
+                                <th>Item Details</th>
+                                <th>Date</th>
+                                <th>Rate</th>
+                                <th>Total Quantity</th>
+                                <th>Nos Issued</th>
+                                <th>Balance</th>
+                                <th>Issued To</th>
+                                <th>Issued Date</th>
+                                <th>Issued Id</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in result %}
+                            <tr>
+                                <td>{{ row['date'] }}</td>
+                                <td>{{ row['item_name'] }}</td>
+                                <td>{{ row['rate'] }}</td>
+                                <td>{{ row['total_qty'] }}</td>
+                                <td>{{ row['stock_no'] }}</td>
+                                <td>{{ row['item_type'] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                    {% endblock bigBox1Table %}
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+                    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+                    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
+                    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+                    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+                    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.bootstrap.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+                    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.bootstrap.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+                    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+                    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+                    <script src="{{url_for('static',filename= 'datatables.js' )}}"></script>
+					
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+{% endblock main %}
